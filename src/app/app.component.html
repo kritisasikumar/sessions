@@ -1,12 +1,43 @@
 <form #gfg = "ngForm" (ngSubmit)="onSubmit(gfg.value)">    
+  <div style="text-align: center;">
+    <p>Creating</p>
+    <p><input type="text" name = 'firstName' ngModel placeholder="FirstName"></p>
+    <p><input type="text" name = 'lastName' ngModel placeholder="LastName"></p>
+    <p><input type="text" name = 'email' ngModel placeholder="Email"></p>
+    <p><input type="text" name = 'password' ngModel placeholder="Password"></p>
+    <p ><button type="submit">Submit</button></p>
+  </div>
+</form>
+<hr>
+<form #gfg1 = "ngForm" (ngSubmit)="onLogin(gfg1.value)">    
+  <div style="text-align: center;">
+    <p>Login</p>
+    <p><input type="text" name = 'email' ngModel placeholder="Email"></p>
+    <p><input type="text" name = 'password' ngModel placeholder="Password"></p>
+    <p ><button type="Login">Login</button></p>
+  </div>
+</form>
+
+<hr>
+  <div style="text-align: center;">
+    <p>To view all exisiting data</p>
+    <p><button type="click" (click)="getData()">Press to get values</button></p>
+  </div>
+
+<br>
+<hr>
+<div style="text-align: center;">
+  <p>Updating</p>
   <p><input type="text" name = 'firstName' ngModel placeholder="FirstName"></p>
   <p><input type="text" name = 'lastName' ngModel placeholder="LastName"></p>
   <p><input type="text" name = 'email' ngModel placeholder="Email"></p>
-  <p><input type="text" name = 'password' ngModel placeholder="Password"></p>
-  <p style="padding-left:50px"><button type="submit">Submit</button></p>
-  <p><button type="click" (click)="getData()">Press to get values</button></p>
-</form>
-<br>
+  <p><button type="click" (click)="Update()">Update</button></p>
+</div>
+<hr>
+<div style="text-align: center;">
+  <p><button type="click" (click)="Delete()">Delete Record</button></p>
+</div>
+
 <!-- {{ gfg.value | json }} -->
 
 <router-outlet></router-outlet>

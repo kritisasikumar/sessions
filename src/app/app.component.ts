@@ -22,15 +22,22 @@ export class AppComponent {
     // data.sum=(data.firstName*data.lastName)
     // console.log(data.sum);
     
-    // var headers = new Headers();
-    // headers.append('authorizationToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTFkMmM2NGE3YWE5MWNhNDFiMWYwNiIsImlhdCI6MTY1NDg2MjkxMSwiZXhwIjoxNjU0ODY2NTExfQ.MVETur-TFJeQJtEx6LHIrTsN294UJW8tTFke9dPRRw0');
-        
-    // this.http.post('https://9qbfkwvx69.execute-api.ap-south-1.amazonaws.com/dev/user/create',data)
-    // .subscribe((result:any)=>{
-    //   const token = result
-    //   console.log(token)
-    //   sessionStorage.setItem('token', JSON.stringify(result.token));
-    // })
+    this.http.post('https://49yewrmj8f.execute-api.ap-south-1.amazonaws.com/dev/user/create',data)
+    .subscribe((result:any)=>{
+      const token = result
+      console.log(token)
+      sessionStorage.setItem('token', JSON.stringify(result.token));
+    })
+
+  }  
+  onLogin(data: any){
+
+    this.http.post('https://49yewrmj8f.execute-api.ap-south-1.amazonaws.com/dev/user/login',data)
+    .subscribe((result:any)=>{
+      const token = result
+      console.log(token)
+      sessionStorage.setItem('token', JSON.stringify(result.token));
+    })
 
   }  
   getData(){
@@ -44,15 +51,20 @@ export class AppComponent {
     })
     
   }
-  
-    
-        
-    // this.http.get<any>('https://9qbfkwvx69.execute-api.ap-south-1.amazonaws.com/dev/users',{headers})
-    // .subscribe((result:any)=>{
-    //   console.log(result)
-    //   const token = result
-    //   console.log(token)
-    //   sessionStorage.setItem('token', JSON.stringify(result.token));
-    // })
- 
+
+  Update(){
+    var ses=sessionStorage.getItem('token')!;
+    const headers = { 'authorizationToken': ses}
+    this.http.put('https://49yewrmj8f.execute-api.ap-south-1.amazonaws.com/dev/user/{id}', { headers }).subscribe(result => {
+        console.log(result)
+    })
+
+  }
+ Delete(){
+  var ses=sessionStorage.getItem('token')!;
+    const headers = { 'authorizationToken': ses}
+    this.http.delete('https://49yewrmj8f.execute-api.ap-south-1.amazonaws.com/dev/user/{id}', { headers }).subscribe(result => {
+        console.log(result)
+    })
+ }
 }
